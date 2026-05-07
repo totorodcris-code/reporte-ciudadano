@@ -1,0 +1,471 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* PurgeCSS will handle unused styles removal in production */
+@layer base {
+  :root {
+    --color-primary: 59, 130, 246;
+    --color-primary-dark: 37, 99, 235;
+    --color-secondary: 168, 85, 247;
+    --color-accent: 251, 146, 60;
+    --color-success: 34, 197, 94;
+    --color-warning: 250, 204, 21;
+    --color-error: 239, 68, 68;
+    --color-neutral-50: 249, 250, 251;
+    --color-neutral-100: 243, 244, 246;
+    --color-neutral-200: 229, 231, 235;
+    --color-neutral-300: 209, 213, 219;
+    --color-neutral-400: 156, 163, 175;
+    --color-neutral-500: 107, 114, 128;
+    --color-neutral-600: 75, 85, 99;
+    --color-neutral-700: 55, 65, 81;
+    --color-neutral-800: 31, 41, 55;
+    --color-neutral-900: 17, 24, 39;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  body {
+    @apply antialiased;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: rgb(var(--color-neutral-50));
+  }
+
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-blue-500 rounded;
+  }
+
+  a, button {
+    @apply focus-visible-ring;
+  }
+
+  input, textarea, select {
+    @apply min-h-touch;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 600;
+  }
+
+  /* Critical CSS inlining for performance */
+  .critical-above-fold {
+    /* Styles for content above the fold */
+  }
+
+  /* Reduce paint on non-critical animations */
+  .will-change-transform {
+    will-change: transform;
+  }
+
+  /* Optimize images */
+  img {
+    content-visibility: auto;
+    contain-intrinsic-size: auto;
+  }
+
+  /* Font loading with robust error handling */
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Arial'), local('Helvetica'), local('sans-serif');
+    /* Fallback to system fonts - no external URLs to avoid OTS errors */
+  }
+
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: local('Arial'), local('Helvetica'), local('sans-serif');
+  }
+
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: local('Arial'), local('Helvetica'), local('sans-serif');
+  }
+
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: local('Arial'), local('Helvetica'), local('sans-serif');
+  }
+
+  @font-face {
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Arial'), local('Helvetica'), local('sans-serif');
+  }
+
+  @font-face {
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: local('Arial'), local('Helvetica'), local('sans-serif');
+  }
+
+  /* Optional: Load external fonts with error handling */
+  @font-face {
+    font-family: 'Inter External';
+    font-style: normal;
+    font-weight: 400 700;
+    font-display: fallback;
+    src: local('Inter External');
+    /* Remove external URL to prevent OTS errors */
+  }
+
+  @font-face {
+    font-family: 'Plus Jakarta Sans External';
+    font-style: normal;
+    font-weight: 400 700;
+    font-display: fallback;
+    src: local('Plus Jakarta Sans External');
+    /* Remove external URL to prevent OTS errors */
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-blue-600 text-white px-4 py-2.5 sm:px-6 sm:py-3 rounded-xl font-semibold hover:bg-blue-700 active:bg-blue-800 transition-all duration-200 min-h-touch shadow-md hover:shadow-lg transform hover:-translate-y-0.5 active:translate-y-0;
+    background: rgb(var(--color-primary));
+  }
+
+  .btn-secondary {
+    @apply bg-white text-gray-700 px-4 py-2.5 sm:px-6 sm:py-3 rounded-xl font-semibold hover:bg-gray-50 active:bg-gray-100 transition-all duration-200 min-h-touch shadow-sm hover:shadow-md border border-gray-200 transform hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-accent {
+    @apply text-white px-4 py-2.5 sm:px-6 sm:py-3 rounded-xl font-semibold transition-all duration-200 min-h-touch shadow-md hover:shadow-lg transform hover:-translate-y-0.5 active:translate-y-0;
+    background: rgb(var(--color-accent));
+  }
+
+  .btn-success {
+    @apply text-white px-4 py-2.5 sm:px-6 sm:py-3 rounded-xl font-semibold transition-all duration-200 min-h-touch shadow-md hover:shadow-lg transform hover:-translate-y-0.5 active:translate-y-0;
+    background: rgb(var(--color-success));
+  }
+
+  .btn-danger {
+    @apply text-white px-4 py-2.5 sm:px-6 sm:py-3 rounded-xl font-semibold transition-all duration-200 min-h-touch shadow-md hover:shadow-lg transform hover:-translate-y-0.5 active:translate-y-0;
+    background: rgb(var(--color-error));
+  }
+
+  .input-field {
+    @apply w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:outline-none min-h-touch text-gray-900 placeholder-gray-400 transition-all duration-200 bg-white text-base sm:text-sm;
+  }
+
+  select.input-field option {
+    @apply text-gray-900 bg-white;
+  }
+
+  select.input-field option:disabled {
+    @apply text-gray-500;
+  }
+
+  /* Fix for dark theme selects in user dashboard */
+  select.text-white option {
+    @apply text-gray-900 bg-white;
+  }
+
+  select.text-white option:disabled {
+    @apply text-gray-500;
+  }
+
+  select.text-white option[value=""] {
+    @apply text-gray-500;
+  }
+
+  .input-field:focus {
+    @apply shadow-lg;
+    box-shadow: 0 0 0 3px rgb(59 130 246 / 0.1);
+  }
+
+  .card {
+    @apply bg-white rounded-2xl p-4 sm:p-6 transition-all duration-300;
+    box-shadow: var(--shadow);
+  }
+
+  .card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+
+  .card-elevated {
+    @apply bg-white rounded-2xl p-4 sm:p-6 transition-all duration-300;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .card-elevated:hover {
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-4px);
+  }
+
+  .btn-accessible {
+    @apply min-h-touch min-w-touch px-4 py-2.5 sm:px-6 sm:py-3 font-bold rounded-xl transition-all duration-200;
+  }
+
+  .focus-visible-ring {
+    @apply outline-2 outline-offset-2 outline-blue-500;
+  }
+
+  .gradient-primary {
+    background: linear-gradient(135deg, rgb(var(--color-primary)) 0%, rgb(var(--color-primary-dark)) 100%);
+  }
+
+  .gradient-accent {
+    background: linear-gradient(135deg, rgb(var(--color-accent)) 0%, rgb(251 100 20) 100%);
+  }
+
+  .gradient-secondary {
+    background: linear-gradient(135deg, rgb(var(--color-secondary)) 0%, rgb(147 51 234) 100%);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, rgb(var(--color-primary)) 0%, rgb(var(--color-secondary)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .gradient-blue {
+    background: linear-gradient(135deg, rgb(var(--color-primary)) 0%, rgb(var(--color-primary-dark)) 100%);
+  }
+
+  .gradient-yellow {
+    background: linear-gradient(135deg, rgb(var(--color-warning)) 0%, rgb(245 158 11) 100%);
+  }
+
+  .skip-link {
+    @apply absolute -top-10 left-0 bg-blue-600 text-white px-4 py-2 z-50 transition-all duration-300 rounded-lg;
+  }
+
+  .skip-link:focus {
+    @apply top-4;
+  }
+
+  .high-contrast-text {
+    @apply text-gray-900;
+  }
+
+  .btn-bounce-xs {
+    animation: btnBounce 1s infinite;
+    animation-delay: 500ms;
+  }
+
+  .backdrop-blur-xs {
+    backdrop-filter: blur(2px);
+  }
+
+  .backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+  }
+
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .glass-effect-dark {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.3s ease-out;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .shadow-glow {
+    box-shadow: 0 0 20px rgb(59 130 246 / 0.3);
+  }
+
+  .shadow-glow-accent {
+    box-shadow: 0 0 20px rgb(251 146 60 / 0.3);
+  }
+
+  .border-gradient {
+    background: linear-gradient(white, white) padding-box,
+                linear-gradient(135deg, rgb(var(--color-primary)), rgb(var(--color-secondary))) border-box;
+    border: 2px solid transparent;
+  }
+
+  /* Mobile-specific utilities */
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .safe-left {
+    padding-left: env(safe-area-inset-left);
+  }
+
+  .safe-right {
+    padding-right: env(safe-area-inset-right);
+  }
+
+  .safe-all {
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  }
+
+  /* Touch-friendly spacing */
+  .touch-spacing-y {
+    @apply space-y-2 sm:space-y-4;
+  }
+
+  .touch-spacing-x {
+    @apply space-x-2 sm:space-x-4;
+  }
+
+  /* Responsive text sizing */
+  .responsive-text-xs {
+    @apply text-xs sm:text-sm;
+  }
+
+  .responsive-text-sm {
+    @apply text-sm sm:text-base;
+  }
+
+  .responsive-text-base {
+    @apply text-base sm:text-lg;
+  }
+
+  .responsive-text-lg {
+    @apply text-lg sm:text-xl;
+  }
+
+  .responsive-text-xl {
+    @apply text-xl sm:text-2xl;
+  }
+
+  .responsive-text-2xl {
+    @apply text-2xl sm:text-3xl;
+  }
+
+  /* Mobile grid utilities */
+  .mobile-grid {
+    @apply grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3;
+  }
+
+  .mobile-grid-2 {
+    @apply grid grid-cols-1 gap-4 sm:grid-cols-2;
+  }
+
+  /* Mobile visibility */
+  .mobile-only {
+    @apply block sm:hidden;
+  }
+
+  .mobile-hidden {
+    @apply hidden sm:block;
+  }
+
+  /* Touch targets */
+  .touch-target {
+    @apply min-h-touch min-w-touch;
+  }
+
+  .touch-target-lg {
+    @apply min-h-touch-lg min-w-touch;
+  }
+}
+
+@keyframes btnBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  background-size: 200px 100%;
+  animation: shimmer 2s infinite;
+}
